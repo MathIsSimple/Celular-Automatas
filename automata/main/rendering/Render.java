@@ -3,7 +3,10 @@ package automata.main.rendering;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
 
+import automata.main.Main;
 import automata.main.simulation.Life;
+import automata.main.simulation.Maze;
+import automata.main.simulation.Wire;
 
 public class Render {
 	
@@ -25,8 +28,34 @@ public class Render {
 	public static void render() {
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 		GL11.glBegin(GL11.GL_QUADS);
-			Life.render();
+		switch(Main.GAME) {
+			case "Life": 
+				Life.render();
+				Life.live();
+				break;
+			case "Wire":
+				Wire.render();
+				Wire.live();
+				break;
+			case "Maze":
+				Maze.render(true);
+				Maze.live();
+				break;
+		}
 		GL11.glEnd();
-		Life.live();
+		
+		switch (Main.GAME) {
+			case "Maze":
+				GL11.glLineWidth(2);
+				break;
+		}
+
+		GL11.glBegin(GL11.GL_LINES);
+		switch (Main.GAME) {
+			case "Maze":
+				Maze.render(false);
+				break;
+		}
+		GL11.glEnd();
 	}
 }

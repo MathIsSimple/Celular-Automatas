@@ -14,6 +14,7 @@ public class Loop {
 		while(Main.isRunning) {
 			if (DisplayManager.isClosed()) Main.isRunning = false;
 			if (!first) Render.render();
+			
 			DisplayManager.updateScreen();
 			Display.sync(Main.FPS);
 			first = false;

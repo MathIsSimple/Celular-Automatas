@@ -1,21 +1,30 @@
 package automata.main;
 
 import automata.main.simulation.Life;
+import automata.main.simulation.Maze;
+import automata.main.simulation.Wire;
 import logic.core.Loop;
 
 public class Main {
 	
-	public static final int WIDTH  = 1000;
-	public static final int HEIGHT = 1000;
-	public static final int SIZE   = 20;
-	public static final int FPS    = 20;
+	public static final int FPS    = 150;
 	public static final String TITLE = "Game Of Life";
+	public static final String GAME  = "Maze";
 	
 	public static boolean isRunning = true;
 	
 	public Main() {
-		DisplayManager.create(WIDTH, HEIGHT, TITLE);
-		Life.createCells(false);
+		switch(GAME) {
+			case "Life": 
+				Life.start();
+				break;
+			case "Wire":
+				Wire.start();
+				break;
+			case "Maze":
+				Maze.start();
+				break;
+		}
 		Loop.loop();
 	}
 	
