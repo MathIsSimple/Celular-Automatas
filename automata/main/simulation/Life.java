@@ -1,5 +1,6 @@
 package automata.main.simulation;
 
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 import automata.main.DisplayManager;
@@ -85,7 +86,7 @@ public class Life {
 			} else if (Mouse.isButtonDown(2)) {
 				createCells(true);
 				canRun = true;
-			} else if (Mouse.isButtonDown(1)) canRun = true;
+			} else if (Keyboard.isKeyDown(Keyboard.KEY_W)) canRun = true;
 			
 		}
 	}

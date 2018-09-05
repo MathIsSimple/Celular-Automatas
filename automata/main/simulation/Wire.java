@@ -1,5 +1,6 @@
 package automata.main.simulation;
 
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
@@ -90,7 +91,7 @@ public class Wire {
 				if (cells[x][y] == 3) {cells[x][y] = 0;}
 				else                  {cells[x][y] ++;}
 				try {Thread.sleep(100);} catch (InterruptedException e) {e.printStackTrace();}
-			} else if (Mouse.isButtonDown(1)) canRun = true;
+			} else if (Mouse.isButtonDown(1) || Keyboard.isKeyDown(Keyboard.KEY_W)) canRun = true;
 		}
 	}
 	

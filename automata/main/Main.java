@@ -7,14 +7,20 @@ import logic.core.Loop;
 
 public class Main {
 	
-	public static final int FPS    = 150;
+	public static final int FPS    = 60;
 	public static final String TITLE = "Game Of Life";
-	public static final String GAME  = "Maze";
+	public static final String[] GAMES = new String[] {"Life", "Wire", "Maze"};
+	public static String Game = "";
 	
 	public static boolean isRunning = true;
 	
 	public Main() {
-		switch(GAME) {
+		start("Maze");
+		Loop.loop();
+	}
+	
+	public static void start(String game) {
+		switch(game) {
 			case "Life": 
 				Life.start();
 				break;
@@ -25,7 +31,7 @@ public class Main {
 				Maze.start();
 				break;
 		}
-		Loop.loop();
+		Game = game;
 	}
 	
 	public static void main(String[] args) {
